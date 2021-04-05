@@ -1,0 +1,28 @@
+NUM_GPUS: 1
+DATASET:
+  CROP_SIZE: 224
+  SCALE_FROM: 0.9
+  SCALE_TO: 1.0
+TRAIN:
+  BATCH_SIZE: 16
+  NUM_EPOCHS: 10
+  NUM_WORKERS: 1
+  PRETRAIN: 5
+NET:
+  BACKBONE: "mobilenet_v2"
+  MODEL: "cls"
+  PRE_WEIGHTS_PATH: ""
+  LR: 0.0005
+  OPT: "Adam"
+  LOSS: "CrossEntropy"
+  WEIGHT_DECAY: 0.0005
+  BETA1: 0.9
+TEST:
+  METHOD: "multiscale" # multiscale | crop
+  DATA_ROOT: "/fastdata/naraslanov"
+  FLIP: True
+  BATCH_SIZE: 8 # 4 scales, +1 flip for each
+  PAD_SIZE: [768, 768]
+  SCALES: [1, 0.75, 1.25, 1.5]
+  FP_CUT_SCORE: 0.3
+  USE_GT_LABELS: True

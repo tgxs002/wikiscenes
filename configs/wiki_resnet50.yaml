@@ -1,0 +1,31 @@
+NUM_GPUS: 1
+DATASET:
+  CROP_SIZE: 224
+  SCALE_FROM: 0.9
+  SCALE_TO: 1.0
+TRAIN:
+  BATCH_SIZE: 18
+  NUM_EPOCHS: 25
+  NUM_WORKERS: 0
+  PRETRAIN: 5
+NET:
+  BACKBONE: "resnet50"
+  MODEL: "ae"
+  PRE_WEIGHTS_PATH: "./models/weights/resnet50-19c8e357.pth"
+  LR: 0.0005
+  OPT: "Adam"
+  LOSS: "CrossEntropy"
+  WEIGHT_DECAY: 0.0005
+  BETA1: 0.9
+TEST:
+  METHOD: "singlescale" # multiscale | crop | "singlescale"
+  DATA_ROOT: "./"
+  NUM_CLASSES: 11
+  FLIP: True
+  BATCH_SIZE: 2 # 4 scales, +1 flip for each
+  PAD_SIZE: [860, 400]
+  # SCALES: [1, 0.75, 1.25, 1.5]
+  SCALES: [1]
+  FP_CUT_SCORE: 0.5
+  USE_GT_LABELS: False
+  BG_POW: 4

@@ -1,0 +1,8 @@
+*.swp
+*.pyc
+logs/
+data/cache
+snapshots/
+*.pth
+correspondence.json
+*.log
