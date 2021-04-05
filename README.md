@@ -1,12 +1,13 @@
 # WikiScenes Dataset
 
-| <img src="figures/teaser.PNG" alt="drawing" width="640"/><br> |
+| <img src="figures/teaser.PNG" alt="drawing" width="800"/><br> |
 |:---|
-| This is the official repository for *WikiScenes*, which a large-scale dataset of landmark photo collections that also contains descriptive text in the form of captions and hierarchical category names. <br> You can find the download link for this dataset and also the code to reproduce the result in our paper. |
+| This is the official repository for *WikiScenes*: a large-scale dataset of landmark photo collections that contains descriptive text in the form of captions and hierarchical category names. <br> Below we provide download links for our dataset and also code to reproduce the result reported in our paper. |
 
 ### The dataset
-1. **Image and Caption** WikiScenes contains 63K images with caption. Download the data from:
-   - WikiScenes: [ (1.9GB .zip file)](https://drive.google.com/file/d/1w1vlMuW3QrouyMCPZOk8EUrSr8wan74k/view?usp=sharing)
+1. **Image and Textual Descriptions** WikiScenes contains 63K images with captions. Download the data from:
+   - Low-res version used in our experiments (shorter dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://drive.google.com/file/d/1w1vlMuW3QrouyMCPZOk8EUrSr8wan74k/view?usp=sharing)
+   - Higher-res version (longer dimension set to 800[px], aspect ratio fixed): PENDING
 
    **Data Structure**
     WikiScenes is organized recursively, following the tree structure in Wikimedia. 
@@ -71,46 +72,44 @@
     2. kp_id is the id of keypoints, which is identical in the whole dataset.
     3. (x, y) the location of the keypoint in this image.
 
-### Reproduce
+### Reproducing Results
 1. **Minimum requirements.** This project was originally developed with Python 3.6, PyTorch 1.0 and CUDA 9.0. The training requires at least one Titan X GPU (12Gb memory) .
-2. **Setup your Python environment.** Please, clone the repository and install the dependencies:
+2. **Setup your Python environment.** Clone the repository and install the dependencies:
     ```
     conda create -n <environment_name> --file requirements.txt -c conda-forge/label/cf202003
     conda install scikit-learn=0.21
     pip install opencv-python
     ```
-3. **Download and link to the dataset.** First download the data as illustrated above, unzip them.
-
-    Link to the data:
+3. **Download and link to the dataset.** Download the data as detailed above, unzip and link:
     ```
     ln -s <your_path_to_Wikiscenes> <project>/data/
     ln -s <your_path_to_correspondense.json> <project>/
     ```
 
-4. **Download pre-trained models.** Download the initial weights (pre-trained on ImageNet) for the backbones you are planning to use and place them into `<project>/models/weights/`.
+4. **Download pre-trained models.** Download the initial weights (pre-trained on ImageNet) for the backbone model and place in `<project>/models/weights/`.
 
-    | Backbone | Initial Weights | Comment |
+    | Backbone | Initial Weights | Comments |
     |:---:|:---:|:---:|
-    | ResNet50 | [resnet50-19c8e357.pth](https://download.pytorch.org/models/resnet50-19c8e357.pth) | PyTorch official |
-5. **Train on WikiScenes dataset** 
+    | ResNet50 | [resnet50-19c8e357.pth](https://download.pytorch.org/models/resnet50-19c8e357.pth) | PyTorch official model|
+5. **Train on the WikiScenes dataset** 
     
-    The first run always takes longer for pre-processing. Computation is cached after then.
+    See instructions below. Note that the first run always takes longer for pre-processing. Some computations are cached afterwards.
 
 
 ### Training, Inference and Evaluation
 The directory `launch` contains template bash scripts for training, inference and evaluation. 
 
-**Training.** For each run, you need to specify names of two variables, `bash EXP` and `bash RUN_ID`. 
-Running `bash EXP=wiki RUN_ID=v01 ./launch/run_wikiscenes_resnet50.sh` will create a directory `./logs/wikiscenes_corr/wiki/` with tensorboard events and will save snapshots into `./snapshots/wikiscenes_corr/wiki/v01`.
+**Training.** For each run, you need to specify the names of two variables, `bash EXP` and `bash RUN_ID`. 
+Running `bash EXP=wiki RUN_ID=v01 ./launch/run_wikiscenes_resnet50.sh` will create a directory `./logs/wikiscenes_corr/wiki/` with tensorboard events and saved snapshots in `./snapshots/wikiscenes_corr/wiki/v01`.
 
-**Inference.** To generate final masks, please, use the script `./launch/infer_val_wikiscenes.sh`. You will need to specify:
+**Inference.** To generate final masks, run `./launch/infer_val_wikiscenes.sh`. You will need to specify:
 * `EXP` and `RUN_ID` you used for training;
 * `OUTPUT_DIR` the path where to save the masks;
 * `SNAPSHOT` specifies the model suffix in the format `e000Xs0.000`;
 
-**Evaluation.** To compute IoU of the masks, please, run `./launch/eval_seg.sh`. You will need to specify `SAVE_DIR` that contains the masks.
+**Evaluation.** To compute IoU of the masks, run `./launch/eval_seg.sh`. You will need to specify `SAVE_DIR` that contains the masks.
 
-Before running the script, please download our [validation set](https://drive.google.com/file/d/1LS8tsaT6JvbRL3tdYCZcL7MT0ESwinyr/view?usp=sharing)
+Before running the script, please download our [validation set](https://drive.google.com/file/d/1LS8tsaT6JvbRL3tdYCZcL7MT0ESwinyr/view?usp=sharing).
 
 ### Pre-trained model
 For testing, we provide our pre-trained ResNet50 model:
