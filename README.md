@@ -119,12 +119,14 @@ For testing, we provide our pre-trained ResNet50 model:
 | ResNet50 | [model_enc_e030Xs-0.825.pth (157M)](https://drive.google.com/file/d/1OS1BsO6I7xBBUJlE4uSE-bfZCq6UpA9y/view?usp=sharing) |
 
 ## Citation
-<!-- We hope that you find this work useful. If you would like to acknowledge us, please, use the following citation:
 ```
-@inproceedings{Araslanov:2020:WSEG,
-  title     = {Single-Stage Semantic Segmentation from Image Labels},
-  author    = {Araslanov, Nikita and and Roth, Stefan},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year = {2020}
-} -->
+@inproceedings{WikiScenes2021,
+  title     = {Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision},
+  author    = {...},
+  booktitle = {...},
+  year = {2021}
+} 
 ```
+
+## Acknowledgement
+Our code is based on the implementation of [Single-Stage Semantic Segmentation from Image Labels](https://github.com/visinf/1-stage-wseg)
