@@ -1,6 +1,6 @@
 # WikiScenes Dataset
 
-| <img src="figures/teaser.PNG" alt="drawing" width="480"/><br> |
+| <img src="figures/teaser.PNG" alt="drawing" width="640"/><br> |
 |:---|
 | This is the official repository for *WikiScenes*, which a large-scale dataset of landmark photo collections that also contains descriptive text in the form of captions and hierarchical category names. <br> You can find the download link for this dataset and also the code to reproduce the result in our paper. |
 
