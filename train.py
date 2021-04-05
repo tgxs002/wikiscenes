@@ -52,7 +52,6 @@ def overlay_map_on_im(im, predmap, point, overlay_path, display=False, weight_ra
     predmap_dup = np.stack((255*predmap,)*3, axis=-1)
     predmap_dup[:,:,0] = 0
     predmap_dup[:,:,1] = 0
-    # predmap_dup[:,:,2] = 0
     overlay = cv2.addWeighted(im, weight_ratio[0], predmap_dup, weight_ratio[1], 0)
     # draw a cross
     green = (250, 250, 250)
@@ -65,7 +64,6 @@ def overlay_map_on_im(im, predmap, point, overlay_path, display=False, weight_ra
     for k in range(y - mark_size, y + 1 + mark_size):
         if 0 <= k < overlay.shape[1]:
             overlay = cv2.circle(overlay, (x, k), radius=0, color=green, thickness=-1)
-    # overlay = cv2.circle(overlay, point, radius=5, color=(0, 0, 0), thickness=-1) #gbr
     cv2.imwrite(overlay_path, cv2.cvtColor(cv2.hconcat([im,overlay]), cv2.COLOR_BGR2RGB))
 
 def apply_colormap_on_image(org_im, activation, colormap_name):
@@ -84,7 +82,6 @@ def apply_colormap_on_image(org_im, activation, colormap_name):
     heatmap[:, :, 3] = 0.4
     heatmap = Image.fromarray((heatmap * 255).astype(np.uint8)).resize(org_im.shape[1:], Image.ANTIALIAS)
     org_im = transforms.ToPILImage()(org_im).convert("RGBA")
-    no_trans_heatmap = Image.fromarray((no_trans_heatmap * 255).astype(np.uint8))
 
     # Apply heatmap on iamge
     heatmap_on_image = Image.new("RGBA", org_im.size)
@@ -249,42 +246,18 @@ class DecTrainer(BaseTrainer):
                 elif self.use_triplet:
                     # add a fake kp
                     coord = torch.cat([coord, coord[1:2]])
-                    # add a random shift in [0.25, 0.75], fmod it
-                    # so the selected fake keypoint is far enough from the correct corresponding one
-
-                    ### 1. previous sampling method
-                    # coord[2,0,:,:] += (torch.rand(coord.shape[2], 2) / 2 + 0.25).cuda()
-                    # coord = coord.fmod(1.0)
-                    ### close 1
-
-                    ### 2. just randomly sample some points
                     coord[2,0,:,:] += (torch.rand(coord.shape[2], 2)).cuda()
-                    ### close 2
+
 
                 elif self.use_contrastive:
                     # sample negative
                     coord = torch.cat([coord, coord[1:2].repeat(self.num_negative,1,1,1)])  #[12, 1, 24, 2]
-                    # add a random shift in +/-[0.25, 0.75]
-                    # so the selected fake keypoint is far enough from the correct corresponding one
-
-                    ### 1. previous version
-                    # coord[2:,0,:,:] += (torch.rand(self.num_negative, coord.shape[2], 2) / 2 + 0.25).cuda()
-                    # coord = coord.fmod(1.0)   # coord in range [0,1]
-                    ### close 1
-
-                    ### 2. just randomly sample some points
-                    # coord[2:,0,:,:] += (torch.rand(self.num_negative, coord.shape[2], 2)).cuda()
-                    # coord = coord.fmod(1.0)   # coord in range [0,1]
-                    ### close 2
-
-                    ### 3. hadar's sampling stragety
                     coord[2:2 + self.num_negative//2, 0, :, 0:1] += ((2*((torch.rand(self.num_negative // 2, coord.shape[2], 1) > 0.5).type(torch.FloatTensor) - 0.5))*(torch.rand(self.num_negative // 2, coord.shape[2], 1) / 2 + 0.25)).cuda()
                     coord[2:2 + self.num_negative//2, 0, :, 1:] =  (torch.rand(self.num_negative // 2, coord.shape[2], 1)).cuda()
                     coord[2 + self.num_negative//2:, 0, :, 1:] += ((2*((torch.rand(self.num_negative // 2, coord.shape[2], 1) > 0.5).type(torch.FloatTensor) - 0.5))*(torch.rand(self.num_negative // 2, coord.shape[2], 1) / 2 + 0.25)).cuda()
                     coord[2 + self.num_negative//2:, 0, :, 0:1] =  (torch.rand(self.num_negative // 2, coord.shape[2], 1)).cuda()
                     coord.fmod(1.0)
                     coord[coord < 0] = 0.0  # coord in range [0,1]
-                    ### close 3
 
                 if debug:
                     coord_arr.append(coord.clone())
@@ -306,9 +279,6 @@ class DecTrainer(BaseTrainer):
                     distance_n = (keypoints[0] - keypoints[2]).norm(dim=0)
                     loss_3d += nn.ReLU()(args.triplet_margin + distance_p - distance_n).mean()
                 elif self.use_contrastive:
-                    # diff = (keypoints[0] - keypoints[1:]) #[11, 256, 1, 24]
-                    # distance = (1 - (diff * diff).sum(dim=[1,2]).permute(1,0).contiguous() / 2) / self.tau  # [24, 11]
-                    # loss_3d += self.cross_entropy_loss(distance, torch.zeros_like(distance[:,0], dtype=torch.long))
                     num_points = keypoints.shape[-1]
                     if num_points > 1:
                         f_q = keypoints[0].squeeze().repeat(self.num_negative+1,1,1).transpose(0,2) # [24, 256, 11]
@@ -466,8 +436,6 @@ class DecTrainer(BaseTrainer):
             self.writer.add_scalar('lr/enc_group_%02d' % ii, l['lr'], epoch)
 
 
-
-        # self.writer.add_scalar('lr/bg_baseline', self.enc.module.mean.item(), epoch)
         with torch.no_grad():
             # the second parameter is not used
             image_raw = self.denorm(self.fixed_batch["image"].clone())
@@ -759,7 +727,6 @@ class DecTrainer(BaseTrainer):
                 corr = image['corr']
                 for i in range(len(corr)):
                     corr[i] = json.loads(corr[i])
-                # image = torch.cat([image['1'], image['2']], 0)
                 # not validate the random selected ones
                 image = image['1']
                 image_corr = {"image": image, "corr": corr}

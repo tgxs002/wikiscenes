@@ -98,7 +98,6 @@ if __name__ == '__main__':
             if not cfg.TEST.USE_GT_LABELS:
                 cls_sigmoid = torch.sigmoid(cls_raw)
                 cls_sigmoid, _ = cls_sigmoid.max(0)
-                #cls_sigmoid = cls_sigmoid.mean(0)
                 # threshold class scores
                 labels = (cls_sigmoid > cfg.TEST.FP_CUT_SCORE)
             else:
@@ -109,7 +108,6 @@ if __name__ == '__main__':
         masks_pred = masks_pred.cpu()
         labels = labels.type_as(masks_pred)
 
-        #writer.save(img_name[0], image, masks_pred, pads, labels, gt_mask[0])
         writer.save(img_name[0], image, masks_pred, pads, labels, gt_mask[0])
 
         timer.update_progress(float(iter + 1) / N)
