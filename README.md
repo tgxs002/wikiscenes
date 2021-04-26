@@ -54,7 +54,7 @@
     3. SUB-DIR-NAME is the name of the sub-folder (e.g., "0") 
     4. PICTURE-NAME is the name of the jpg file located within the pictures folder
     5. CAPTION-DATA contains the caption and URL contains the url from which the image was scraped.
-    6. PROPERTIES is a list of properties pre-computed for the image-caption pair.
+    6. PROPERTIES is a list of properties pre-computed for the image-caption pair (e.g. estimated language of caption).
 2. **Keypoint correspondences**
    We also provide keypoint correspondences between pixels of images from the same landmark. 
    - correspondence: [ (913MB .zip file)](https://drive.google.com/file/d/1-G2xnrC6RvSnNO9PVmW6w2NGofKV6kW7/view?usp=sharing)
@@ -69,7 +69,7 @@
     ```
     where:
     1. image_id is the id of each image.
-    2. kp_id is the id of keypoints, which is identical in the whole dataset.
+    2. kp_id is the id of keypoints, which is unique across the whole dataset.
     3. (x, y) the location of the keypoint in this image.
 
 ### Reproducing Results
