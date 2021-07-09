@@ -7,7 +7,7 @@
 ### The dataset
 1. **Image and Textual Descriptions** WikiScenes contains 63K images with captions. Download the data from:
    - Low-res version used in our experiments (shorter dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://drive.google.com/file/d/1w1vlMuW3QrouyMCPZOk8EUrSr8wan74k/view?usp=sharing)
-   - Higher-res version (longer dimension set to 800[px], aspect ratio fixed): PENDING
+   - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/wikiscenes_1200.zip)
 
    **Data Structure**
     WikiScenes is organized recursively, following the tree structure in Wikimedia. 
@@ -71,6 +71,8 @@
     1. image_id is the id of each image.
     2. kp_id is the id of keypoints, which is unique across the whole dataset.
     3. (x, y) the location of the keypoint in this image.
+3. **COLMAP reconstructions**
+   We provide the full 3D models used for computing keypoint correspondences: [ (4.5GB .zip file)](https://www.cs.cornell.edu/projects/babel/models.zip)
 
 ### Reproducing Results
 1. **Minimum requirements.** This project was originally developed with Python 3.6, PyTorch 1.0 and CUDA 9.0. The training requires at least one Titan X GPU (12Gb memory) .
