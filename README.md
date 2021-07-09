@@ -57,7 +57,7 @@
     6. PROPERTIES is a list of properties pre-computed for the image-caption pair (e.g. estimated language of caption).
 2. **Keypoint correspondences**
    We also provide keypoint correspondences between pixels of images from the same landmark. 
-   - correspondence: [ (982MB .zip file)](www.cs.cornell.edu/projects/babel/correspondence.zip)
+   - correspondence: <www.cs.cornell.edu/projects/babel/correspondence.zip>
 
    **Data Structure**
    ```
