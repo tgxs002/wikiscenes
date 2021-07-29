@@ -1,15 +1,21 @@
-# WikiScenes Dataset
+# Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision
+Download links and PyTorch implementation of "Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision", ICCV 2021.
+> Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision
+> [Xiaoshi Wu](https://github.com/tgxs002), [Hadar Averbuch-Elor](cs.cornell.edu/~hadarelor), [Jin Sun](cs.cornell.edu/~jinsun), [Noah Snavely](https://www.cs.cornell.edu/~snavely/) 
+> ICCV 2021
+>
+#### [Project Page](https://www.cs.cornell.edu/projects/babel/) | [Paper](https://www.cs.cornell.edu/projects/babel/) 
 
 | <img src="figures/teaser.PNG" alt="drawing" width="800"/><br> |
 |:---|
-| This is the official repository for *WikiScenes*: a large-scale dataset of landmark photo collections that contains descriptive text in the form of captions and hierarchical category names. <br> Below we provide download links for our dataset and also code to reproduce the result reported in our paper. |
 
-### The dataset
-1. **Image and Textual Descriptions** WikiScenes contains 63K images with captions. Download the data from:
-   - Low-res version used in our experiments (shorter dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://drive.google.com/file/d/1w1vlMuW3QrouyMCPZOk8EUrSr8wan74k/view?usp=sharing)
-   - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/wikiscenes_1200.zip)
+### The WikiScenes Dataset
+1. **Image and Textual Descriptions:** WikiScenes contains 63K images with captions. We provide two versions for download:
+   - Low-res version used in our experiments (shorter dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
+   - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
 
-   **Data Structure**
+   *Data Structure*
+   
     WikiScenes is organized recursively, following the tree structure in Wikimedia. 
     Each semantic category (e.g. cathedral) contains the following recursive structure:
     ```
@@ -55,11 +61,9 @@
     4. PICTURE-NAME is the name of the jpg file located within the pictures folder
     5. CAPTION-DATA contains the caption and URL contains the url from which the image was scraped.
     6. PROPERTIES is a list of properties pre-computed for the image-caption pair (e.g. estimated language of caption).
-2. **Keypoint correspondences**
-   We also provide keypoint correspondences between pixels of images from the same landmark. 
-   - correspondence: [ (982MB .zip file)](https://www.cs.cornell.edu/projects/babel/correspondence.zip)
+2. **Keypoint correspondences:** We also provide keypoint correspondences between pixels of images from the same landmark: [ (982MB .zip file)](https://www.cs.cornell.edu/projects/babel/correspondence.json.zip)
 
-   **Data Structure**
+   *Data Structure*
    ```
     {
         "image_id" : {
@@ -71,8 +75,7 @@
     1. image_id is the id of each image.
     2. kp_id is the id of keypoints, which is unique across the whole dataset.
     3. (x, y) the location of the keypoint in this image.
-3. **COLMAP reconstructions**
-   We provide the full 3D models used for computing keypoint correspondences: [ (4.5GB .zip file)](https://www.cs.cornell.edu/projects/babel/models.zip)
+3. **COLMAP reconstructions:** We provide the full 3D models used for computing keypoint correspondences: [ (1GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes3D.zip)
 
 ### Reproducing Results
 1. **Minimum requirements.** This project was originally developed with Python 3.6, PyTorch 1.0 and CUDA 9.0. The training requires at least one Titan X GPU (12Gb memory) .
@@ -82,20 +85,14 @@
     conda install scikit-learn=0.21
     pip install opencv-python
     ```
-3. **Download and link to the dataset.** Download the data as detailed above, unzip and link:
-    ```
-    ln -s <your_path_to_Wikiscenes> <project>/data/
-    ln -s <your_path_to_correspondense.json> <project>/
-    ```
+3. **Download the dataset.** Download the data as detailed above, unzip and place as follows: Image and textual descriptions in ```<project>/data/``` and the correspondence file in ```<project>```.
 
 4. **Download pre-trained models.** Download the initial weights (pre-trained on ImageNet) for the backbone model and place in `<project>/models/weights/`.
 
     | Backbone | Initial Weights | Comments |
     |:---:|:---:|:---:|
     | ResNet50 | [resnet50-19c8e357.pth](https://download.pytorch.org/models/resnet50-19c8e357.pth) | PyTorch official model|
-5. **Train on the WikiScenes dataset** 
-    
-    See instructions below. Note that the first run always takes longer for pre-processing. Some computations are cached afterwards.
+5. **Train on the WikiScenes dataset.** See instructions below. Note that the first run always takes longer for pre-processing. Some computations are cached afterwards.
 
 
 ### Training, Inference and Evaluation
@@ -122,12 +119,12 @@ For testing, we provide our pre-trained ResNet50 model:
 
 ## Citation
 ```
-@inproceedings{WikiScenes2021,
-  title     = {Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision},
-  author    = {...},
-  booktitle = {...},
-  year = {2021}
-} 
+@inproceedings{Wu2021Towers,
+ title={Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision},
+ author={Wu, Xiaoshi and Averbuch-Elor, Hadar and Sun, Jin and Snavely, Noah},
+ booktitle={ICCV},
+ year={2021}
+}
 ```
 
 ## Acknowledgement
