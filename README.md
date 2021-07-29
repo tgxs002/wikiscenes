@@ -1,6 +1,7 @@
 # Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision
 Download links and PyTorch implementation of "Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision", ICCV 2021.
 > Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision
+>
 > [Xiaoshi Wu](https://github.com/tgxs002), [Hadar Averbuch-Elor](cs.cornell.edu/~hadarelor), [Jin Sun](cs.cornell.edu/~jinsun), [Noah Snavely](https://www.cs.cornell.edu/~snavely/) 
 > ICCV 2021
 >
@@ -10,7 +11,7 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 |:---|
 
 ### The WikiScenes Dataset
-1. **Image and Textual Descriptions:** WikiScenes contains 63K images with captions. We provide two versions for download:
+1. **Image and Textual Descriptions:** WikiScenes contains 63K images with captions of 99 cathedrals. We provide two versions for download:
    - Low-res version used in our experiments (shorter dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
    - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
 
@@ -76,6 +77,17 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
     2. kp_id is the id of keypoints, which is unique across the whole dataset.
     3. (x, y) the location of the keypoint in this image.
 3. **COLMAP reconstructions:** We provide the full 3D models used for computing keypoint correspondences: [ (1GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes3D.zip)
+    
+4. **Companion datasets for additional landmark categories:** We provide download links for additional category types: 
+
+    *Synagogues*
+    
+     [Images and captions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel), [correspondences (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel), [reconstructions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel)
+
+    *Mosques*
+    
+     [Images and captions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel), [correspondences (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel), [reconstructions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel)
+
 
 ### Reproducing Results
 1. **Minimum requirements.** This project was originally developed with Python 3.6, PyTorch 1.0 and CUDA 9.0. The training requires at least one Titan X GPU (12Gb memory) .
