@@ -12,7 +12,7 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 
 ### The WikiScenes Dataset
 1. **Image and Textual Descriptions:** WikiScenes contains 63K images with captions of 99 cathedrals. We provide two versions for download:
-   - Low-res version used in our experiments (shorter dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
+   - Low-res version used in our experiments (longer dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
    - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
 
    *Data Structure*
@@ -77,6 +77,8 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
     2. kp_id is the id of keypoints, which is unique across the whole dataset.
     3. (x, y) the location of the keypoint in this image.
 3. **COLMAP reconstructions:** We provide the full 3D models used for computing keypoint correspondences: [ (1GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes3D.zip)
+   
+   To view these models, download and install [COLMAP](https://colmap.github.io/). The reconstructions are organized by landmarks. Each landmark folder contains all the reconstructions associated with that landmark. Please refer to COLMAP's [tutorial](https://colmap.github.io/tutorial.html) for further instructions on how to view these reconstructions.
     
 4. **Companion datasets for additional landmark categories:** We provide download links for additional category types: 
 
@@ -93,8 +95,9 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 1. **Minimum requirements.** This project was originally developed with Python 3.6, PyTorch 1.0 and CUDA 9.0. The training requires at least one Titan X GPU (12Gb memory) .
 2. **Setup your Python environment.** Clone the repository and install the dependencies:
     ```
-    conda create -n <environment_name> --file requirements.txt -c conda-forge/label/cf202003
-    conda install scikit-learn=0.21
+   conda create -n <environment_name> --file requirements.txt -c conda-forge/label/cf202003
+   conda activate <environment_name>
+   conda install scikit-learn=0.21
     pip install opencv-python
     ```
 3. **Download the dataset.** Download the data as detailed above, unzip and place as follows: Image and textual descriptions in ```<project>/data/``` and the correspondence file in ```<project>```.
