@@ -1,8 +1,10 @@
 *.swp
 *.pyc
+*.zip
 logs/
 data/cache
 snapshots/
 *.pth
 correspondence.json
 *.log
+val_seg/

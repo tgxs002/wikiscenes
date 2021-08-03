@@ -12,8 +12,8 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 
 ### The WikiScenes Dataset
 1. **Image and Textual Descriptions:** WikiScenes contains 63K images with captions of 99 cathedrals. We provide two versions for download:
-   - Low-res version used in our experiments (longer dimension set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
-   - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
+   - Low-res version used in our experiments (maximum width set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
+   - Higher-res version (maximum longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
 
    *Data Structure*
    
@@ -116,14 +116,26 @@ The directory `launch` contains template bash scripts for training, inference an
 **Training.** For each run, you need to specify the names of two variables, `bash EXP` and `bash RUN_ID`. 
 Running `bash EXP=wiki RUN_ID=v01 ./launch/run_wikiscenes_resnet50.sh` will create a directory `./logs/wikiscenes_corr/wiki/` with tensorboard events and saved snapshots in `./snapshots/wikiscenes_corr/wiki/v01`.
 
-**Inference.** To generate final masks, run `./launch/infer_val_wikiscenes.sh`. You will need to specify:
+**Inference.** 
+
+If you want to do inference with our pre-trained model, please make a directory and put the model there. 
+```
+    mkdir -p ./snapshots/wikiscenes_corr/final/ours
+```
+Download our [validation set](https://drive.google.com/file/d/1LS8tsaT6JvbRL3tdYCZcL7MT0ESwinyr/view?usp=sharing), and unzip it.
+```
+    unzip val_seg.zip
+```
+run `sh ./launch/infer_val_wikiscenes.sh` to predict masks. You can find the predicted masks in `./logs/masks`.
+
+If you want to evaluate you own models, you will also need to specify:
 * `EXP` and `RUN_ID` you used for training;
 * `OUTPUT_DIR` the path where to save the masks;
 * `SNAPSHOT` specifies the model suffix in the format `e000Xs0.000`;
 
-**Evaluation.** To compute IoU of the masks, run `./launch/eval_seg.sh`. You will need to specify `SAVE_DIR` that contains the masks.
 
-Before running the script, please download our [validation set](https://drive.google.com/file/d/1LS8tsaT6JvbRL3tdYCZcL7MT0ESwinyr/view?usp=sharing).
+**Evaluation.** To compute IoU of the masks, run `sh ./launch/eval_seg.sh`.
+
 
 ### Pre-trained model
 For testing, we provide our pre-trained ResNet50 model:
