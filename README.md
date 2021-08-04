@@ -142,7 +142,7 @@ For testing, we provide our pre-trained ResNet50 model:
 
 | Backbone | Link |
 |:---:|---:|
-| ResNet50 | [model_enc_e030Xs-0.825.pth (157M)](https://drive.google.com/file/d/1OS1BsO6I7xBBUJlE4uSE-bfZCq6UpA9y/view?usp=sharing) |
+| ResNet50 | [model_enc_e024Xs-0.800.pth (157M)](https://drive.google.com/file/d/1FP-Zg4Dj0h56SZBJUkmaJSoyNsVv6t7P/view?usp=sharing) |
 
 ## Citation
 ```

@@ -22,6 +22,9 @@ cudnn.enabled = True
 cudnn.benchmark = False
 cudnn.deterministic = True
 
+from PIL import Image, ImagePalette
+from datasets.utils import labelcolormap
+
 from opts import get_arguments
 from core.config import cfg, cfg_from_file, cfg_from_list
 from models import get_model
@@ -84,10 +87,17 @@ if __name__ == '__main__':
     timer = Timer()
     N = len(dataloader)
 
-    palette = dataset.get_palette()
-    writer = WriterClass(cfg.TEST, palette, args.mask_output_dir)
+
+    cmap = labelcolormap(11)
+    writer = WriterClass(cfg.TEST, cmap, args.mask_output_dir)
+
 
     for iter, (img_name, img_orig, images_in, pads, labels, gt_mask) in enumerate(tqdm(dataloader)):
+
+        # we do not use the padding
+        assert len(cfg.TEST.SCALES) == 1
+        pad_h, pad_w, h, w = [int(p) for p in pads[0]]
+        images_in = images_in[..., pad_h:(pad_h + h), pad_w:(pad_w + w)]
 
         # cutting the masks
         masks = []
@@ -98,17 +108,17 @@ if __name__ == '__main__':
             if not cfg.TEST.USE_GT_LABELS:
                 cls_sigmoid = torch.sigmoid(cls_raw)
                 cls_sigmoid, _ = cls_sigmoid.max(0)
-                # threshold class scores
-                labels = (cls_sigmoid > cfg.TEST.FP_CUT_SCORE)
+                labels_pred = (cls_sigmoid == cls_sigmoid.max())
             else:
-                labels = labels[0]
+                labels_pred = labels[0]
+
 
         # saving the raw npy
         image = dataset.denorm(img_orig[0]).numpy()
         masks_pred = masks_pred.cpu()
-        labels = labels.type_as(masks_pred)
+        labels_pred = labels_pred.type_as(masks_pred)
 
-        writer.save(img_name[0], image, masks_pred, pads, labels, gt_mask[0])
+        writer.save(img_name[0], image, masks_pred, pads, labels_pred, gt_mask[0])
 
         timer.update_progress(float(iter + 1) / N)
         if iter % 100 == 0:
