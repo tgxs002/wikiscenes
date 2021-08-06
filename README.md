@@ -144,6 +144,9 @@ For testing, we provide our pre-trained ResNet50 model:
 |:---:|---:|
 | ResNet50 | [model_enc_e024Xs-0.800.pth (157M)](https://drive.google.com/file/d/1FP-Zg4Dj0h56SZBJUkmaJSoyNsVv6t7P/view?usp=sharing) |
 
+## Datasheet
+We provide a datasheet for our dataset [here](https://drive.google.com/file/d/1rLYhbNWFV-1OAOiFDU-x2UEaVRK_ZTU7/view?usp=sharing).
+
 ## License
 The images in our dataset are provided by Wikimedia Commons under various [free licenses](https://freedomdefined.org/Definition).
 These licenses permit the use, study, derivation, and redistribution of these images—sometimes with restrictions, e.g. requiring attribution and with [copyleft](https://en.wikipedia.org/wiki/Copyleft). 
