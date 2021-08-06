@@ -144,6 +144,14 @@ For testing, we provide our pre-trained ResNet50 model:
 |:---:|---:|
 | ResNet50 | [model_enc_e024Xs-0.800.pth (157M)](https://drive.google.com/file/d/1FP-Zg4Dj0h56SZBJUkmaJSoyNsVv6t7P/view?usp=sharing) |
 
+## License
+The images in our dataset are provided by Wikimedia Commons under various [free licenses](https://freedomdefined.org/Definition).
+These licenses permit the use, study, derivation, and redistribution of these images—sometimes with restrictions, e.g. requiring attribution and with [copyleft](https://en.wikipedia.org/wiki/Copyleft). 
+We provide full license text and attribution for all images, make no modifications to any, and release these images under their original licenses. 
+The associated captions are provided as a part of unstructured text in Wikimedia Commons, with rights to the original writers under the [CC BY-SA 3.0 license](https://creativecommons.org/licenses/by-sa/3.0/). 
+We modify these (as specified in our paper) and release such derivatives under the same license. 
+We provide the rest of our dataset under a [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+
 ## Citation
 ```
 @inproceedings{Wu2021Towers,
