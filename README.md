@@ -78,7 +78,12 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
     3. (x, y) the location of the keypoint in this image.
 3. **COLMAP reconstructions:** We provide the full 3D models used for computing keypoint correspondences: [ (1GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes3D.zip)
    
-   To view these models, download and install [COLMAP](https://colmap.github.io/). The reconstructions are organized by landmarks. Each landmark folder contains all the reconstructions associated with that landmark. Please refer to COLMAP's [tutorial](https://colmap.github.io/tutorial.html) for further instructions on how to view these reconstructions.
+   To view these models, download and install [COLMAP](https://colmap.github.io/). The reconstructions are organized by landmarks. Each landmark folder contains all the reconstructions associated with that landmark. Each reconstruction contains 3 files:
+   1. points3d.txt that contains one line of data for each 3D point associated with the reconstruction. The format for each point is: POINT3D_ID, X, Y, Z, R, G, B, ERROR, TRACK[] as (IMAGE_ID, POINT2D_IDX).
+   2. images.txt that contains two lines of data for each image associated with the reconstruction. The format of the first line is: IMAGE_ID, QW, QX, QY, QZ, TX, TY, TZ, CAMERA_ID, NAME. The format of the second line is: POINTS2D[] as (X, Y, POINT3D_ID)
+   3. cameras.txt that contains one line of data for each camera associated with the reconstruction according to the following format: CAMERA_ID, MODEL, WIDTH, HEIGHT, PARAMS[]
+   
+   Please refer to COLMAP's [tutorial](https://colmap.github.io/tutorial.html) for further instructions on how to view these reconstructions.
     
 4. **Companion datasets for additional landmark categories:** We provide download links for additional category types: 
 
