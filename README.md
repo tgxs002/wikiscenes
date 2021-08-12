@@ -15,6 +15,8 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
    - Low-res version used in our experiments (maximum width set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
    - Higher-res version (maximum longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
 
+    Licenses for the images are provided here: [ (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel/)
+    
    *Data Structure*
    
     WikiScenes is organized recursively, following the tree structure in Wikimedia. 
