@@ -5,7 +5,7 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 > [Xiaoshi Wu](https://github.com/tgxs002), [Hadar Averbuch-Elor](cs.cornell.edu/~hadarelor), [Jin Sun](cs.cornell.edu/~jinsun), [Noah Snavely](https://www.cs.cornell.edu/~snavely/) 
 > ICCV 2021
 >
-#### [Project Page](https://www.cs.cornell.edu/projects/babel/) | [Paper](https://www.cs.cornell.edu/projects/babel/) 
+#### [Project Page](https://www.cs.cornell.edu/projects/babel/) | [Paper](https://arxiv.org/pdf/2108.05863.pdf) 
 
 | <img src="figures/teaser.PNG" alt="drawing" width="800"/><br> |
 |:---|
