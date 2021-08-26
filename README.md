@@ -12,8 +12,8 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 
 ### The WikiScenes Dataset
 1. **Image and Textual Descriptions:** WikiScenes contains 63K images with captions of 99 cathedrals. We provide two versions for download:
-   - Low-res version used in our experiments (maximum width set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
-   - Higher-res version (maximum longer dimension set to 1200[px], aspect ratio fixed): [ (19.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.zip)
+   - Low-res version used in our experiments (width set to 200[px], aspect ratio fixed): [ (1.9GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes.zip)
+   - Higher-res version (longer dimension set to 1200[px], aspect ratio fixed): [ (16.4GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes1200px.tar.gz)
 
     Licenses for the images are provided here: [ (LicenseInfo.json file)](https://drive.google.com/file/d/17OyIx-IWJv__jGANKdpBXP34_w8IaFjM/view?usp=sharing)
     
