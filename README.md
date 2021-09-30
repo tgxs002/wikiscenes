@@ -165,7 +165,7 @@ We provide the rest of our dataset under a [CC BY-NC-SA 4.0](https://creativecom
 ## Citation
 ```
 @inproceedings{Wu2021Towers,
- title={Towers of Babel: Combining Images, Language, and 3D Geometry for Learning Multimodal Vision},
+ title={{Towers of Babel}: {C}ombining Images, Language, and {3D} Geometry for Learning Multimodal Vision},
  author={Wu, Xiaoshi and Averbuch-Elor, Hadar and Sun, Jin and Snavely, Noah},
  booktitle={ICCV},
  year={2021}
