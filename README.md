@@ -91,11 +91,11 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 
     *Synagogues*
     
-     [Images and captions (4.1GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes_synagogues.zip), [correspondences (47MB json file)](https://www.cs.cornell.edu/projects/babel/corr_synagogues.json), [license file (2.1MB json file)](https://www.cs.cornell.edu/projects/babel/LicenseInfo_synagogues.json), [reconstructions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel)
+     [Images and captions (4.1GB .zip file)](https://www.cs.cornell.edu/projects/babel/WikiScenes_synagogues.zip), [correspondences (47MB json file)](https://www.cs.cornell.edu/projects/babel/corr_synagogues.json), [license file (2.1MB json file)](https://www.cs.cornell.edu/projects/babel/LicenseInfo_synagogues.json)
 
     *Mosques*
     
-     [Images and captions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel), [correspondences (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel), [reconstructions (PENDING .zip file)](https://www.cs.cornell.edu/projects/babel)
+     [Images and captions (85GB .zip file)]([https://www.cs.cornell.edu/projects/babel](https://tauex-my.sharepoint.com/:u:/g/personal/hadarelor_tauex_tau_ac_il/ERGbUaKDax5Jil-h3WWN5CQBpIyyDIxZ5dXcIKXoj65Zww?e=6lhqdd))
 
 
 ### Reproducing Results
