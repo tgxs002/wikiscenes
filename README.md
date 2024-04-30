@@ -95,8 +95,7 @@ Download links and PyTorch implementation of "Towers of Babel: Combining Images,
 
     *Mosques*
     
-     [Images and captions (85GB .zip file)](https://tauex-my.sharepoint.com/:u:/g/personal/hadarelor_tauex_tau_ac_il/ERGbUaKDax5Jil-h3WWN5CQBpIyyDIxZ5dXcIKXoj65Zww?e=6lhqdd), [license file (2.1MB json file)](https://www.cs.cornell.edu/projects/babel/LicenseInfo_mosques.json)
-
+     [Images and captions (85GB .zip file)](https://tauex-my.sharepoint.com/:u:/g/personal/hadarelor_tauex_tau_ac_il/ERGbUaKDax5Jil-h3WWN5CQBpIyyDIxZ5dXcIKXoj65Zww?e=6lhqdd)
 
 ### Reproducing Results
 1. **Minimum requirements.** This project was originally developed with Python 3.6, PyTorch 1.0 and CUDA 9.0. The training requires at least one Titan X GPU (12Gb memory) .
